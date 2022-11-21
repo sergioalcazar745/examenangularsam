@@ -1,0 +1,20 @@
+<div class="container">
+    <h1 class="my-5">Cubos <span *ngIf="marca">{{marca}}</span></h1>
+    <div class="d-flex justify-content-center" *ngIf="loading">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    <div class="row" *ngIf="!loading">
+        <div class="col-4 mb-3" *ngFor="let cubo of cubos">
+            <div class="card" style="width: 18rem;">
+                <img src="{{cubo.imagen}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{cubo.nombre}}</h5>
+                  <p class="card-text">Marca: {{cubo.marca}}<br/>Precio: {{cubo.precio}}</p>
+                  <a class="btn btn-primary" [routerLink]="['/detalle/', cubo.idCubo]">Detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+    <h1 class="my-5">Detalle cubo</h1>
+    <div *ngIf="!loading">
+        <h3>Nombre: {{cubo.nombre}}</h3>
+        <h3>Modelo: {{cubo.modelo}}</h3>
+        <h3>Marca: {{cubo.marca}}</h3>
+        <h3>Color: {{cubo.color}}</h3>
+        <h3>Imagen: <br/> <img src="{{cubo.imagen}}"/></h3>
+        <h3>Precio: {{cubo.precio}} €</h3>
+        <h3>Valoracion: {{cubo.valoracion}}</h3>
+        <hr/>
+        <h2>Comentarios</h2>
+        <div *ngIf="comentarios.length > 0">
+            <div class="row border my-5"*ngFor="let comentario of comentarios">
+                <div class="d-flex border">
+                    <p><span style="font-weight: bold;">Fecha: </span> {{comentario.fechaComentario}} || </p>
+                    <p><span style="font-weight: bold;"><span></span>Comentario: </span> {{comentario.comentario}}</p>   
+                </div>
+            </div>
+        </div>        
+        <div *ngIf="comentarios.length == 0">
+            <h4>No hay comentarios</h4>
+        </div>
+    </div>
+</div>
