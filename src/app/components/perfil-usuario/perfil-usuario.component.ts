@@ -29,7 +29,7 @@ export class PerfilUsuarioComponent implements OnInit {
       this.loading = true;
       this.getPerfil();
       this.getCompras();
-
+      this.loading = false;
     } else {
 
       this._router.navigateByUrl("/")
@@ -40,12 +40,10 @@ export class PerfilUsuarioComponent implements OnInit {
 
   getComprasFilter(){
 
-    this.compras = this.compras.filter(compra => compra.idUsuario == this.perfil.idUsuario);
     for (let compra of this.compras) {
       this.getCubo(compra.idCubo, compra.fechaPedido)
     }
     console.log(this.comprasCubo)
-    this.loading = false;
 
   }
 

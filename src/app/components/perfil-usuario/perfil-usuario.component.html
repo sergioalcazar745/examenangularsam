@@ -5,26 +5,39 @@
           <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    <form *ngIf="!loading">
-        <div class="mt-3">
-            <label class="form-label">Nombre: </label>
-            <input type="text" class="form-control" name="cajanombre" [(ngModel)]="perfil.nombre"/>
+    <div *ngIf="!loading">
+        <form>
+            <div class="mt-3">
+                <label class="form-label">Nombre: </label>
+                <input type="text" class="form-control" name="cajanombre" [(ngModel)]="perfil.nombre"/>
+            </div>
+            <div class="mt-3">
+                <label class="form-label">Email: </label>
+                <input type="text" class="form-control" name="cajaemail" [(ngModel)]="perfil.email"/>
+            </div>
+            <div class="mt-3">
+                <label class="form-label">Password: </label>
+                <input type="text" class="form-control" name="cajapassword" [(ngModel)]="perfil.pass"/>
+            </div>
+        </form>            
+        <hr/>
+        <h1>Compras</h1>
+        
+        <div *ngIf="comprasCubo.length == 0; else compras">
+            <h3>No hay compras</h3>
         </div>
-        <div class="mt-3">
-            <label class="form-label">Email: </label>
-            <input type="text" class="form-control" name="cajaemail" [(ngModel)]="perfil.email"/>
-        </div>
-        <div class="mt-3">
-            <label class="form-label">Password: </label>
-            <input type="text" class="form-control" name="cajapassword" [(ngModel)]="perfil.pass"/>
-        </div>
-    </form>
-    <hr/>
-    <h1>Compras</h1>
-    <div *ngFor="let compra of comprasCubo" class="d-flex border">
-        <span style="font-weight: bold;">Nombre cubo: </span> {{compra.cubo.nombre}} || <span style="font-weight: bold;">Fecha: </span> {{compra.fechaPedido}}
-    </div>
-    <div *ngIf="comprasCubo.length == 0">
-        <h3>No hay compras</h3>
-    </div>
+        <ng-template #compras>
+            <div class="row">
+                <div *ngFor="let compra of comprasCubo" class="card col-4" style="width: 18rem;">
+                    <img src="{{compra.cubo.imagen}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{compra.cubo.nombre}}</h5>
+                        <p class="card-text">{{compra.fechaPedido}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <!-- <span style="font-weight: bold;">Nombre cubo: </span> {{compra.cubo.nombre}} || <span style="font-weight: bold;">Fecha: </span> {{compra.fecha}} -->
+            </div>
+        </ng-template>
+    </div>    
 </div>
